@@ -6,7 +6,7 @@
 #    By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 14:05:51 by nnakarac          #+#    #+#              #
-#    Updated: 2022/07/05 16:38:12 by nnakarac         ###   ########.fr        #
+#    Updated: 2022/07/16 01:15:17 by nnakarac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,8 @@ else
 	LIBS		= -L$(LIB_DIR) -lft
 endif
 
-SRCS =  fdf.c\
+SRCS =  fdf.c \
+		fdf_utility.c \
 
 OBJS = $(SRCS:.c=.o)
 

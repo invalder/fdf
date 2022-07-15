@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 20:39:48 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/07/05 12:09:34 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/07/16 01:19:57 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@
 
 # include <stdio.h>
 # include <math.h>
+# include <fcntl.h>
 # include "libft.h"
 # include "ft_printf.h"
+# include "get_next_line.h"
 # include "mlx.h"
 
 # define EXIT_SUCCEED		0
@@ -51,5 +53,7 @@ typedef struct s_draw
 	int		color;
 }	t_draw;
 
+int		ft_arr_range(char **arr);
+void	ft_free_split(char **str_arr, int len);
 
 #endif
