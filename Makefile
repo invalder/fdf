@@ -6,7 +6,7 @@
 #    By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 14:05:51 by nnakarac          #+#    #+#              #
-#    Updated: 2022/07/16 01:15:17 by nnakarac         ###   ########.fr        #
+#    Updated: 2022/07/24 15:31:31 by nnakarac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,11 @@ else
 endif
 
 SRCS =  fdf.c \
-		fdf_utility.c \
+		fdf_utils.c \
+		fdf_err.c \
+		fdf_input_chk.c \
+		fdf_init_map.c \
+		fdf_mlx_utils.c \
 
 OBJS = $(SRCS:.c=.o)
 
@@ -68,4 +72,6 @@ clean:
 fclean: clean
 	@make -C $(LIB_DIR) fclean --silent
 
-re: fclean all clean re fdf
+re: fclean all
+
+.PHONY: fclean all clean re fdf

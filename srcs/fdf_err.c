@@ -1,38 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_utility.c                                      :+:      :+:    :+:   */
+/*   fdf_err.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/16 01:14:25 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/07/16 02:09:46 by nnakarac         ###   ########.fr       */
+/*   Created: 2022/07/24 10:26:47 by nnakarac          #+#    #+#             */
+/*   Updated: 2022/07/24 10:32:00 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	ft_arr_range(char **arr)
+int fdf_no_file(void)
 {
-	int	len;
-
-	len = 0;
-	while (*arr)
-	{
-		len++;
-		arr++;
-	}
-	return (len);
-}
-
-void	ft_free_split(char **str_arr, int len)
-{
-	int	cnt;
-
-	cnt = 0;
-	while (cnt <= len)
-	{
-		free(str_arr[cnt++]);
-	}
-	free(str_arr);
+    ft_putstr_fd("Error, There's no input file or Invalid arguments\n", 1);
+    ft_putstr_fd("Using \"./fdf <PATH TO FDF FILE>\"\n", 1);
+    ft_putstr_fd("I.E. \"./fdf ./map_dir/map.fdf\"\n", 1);
+    return (1);
 }
