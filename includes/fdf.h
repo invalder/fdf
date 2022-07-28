@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 20:39:48 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/07/24 14:26:50 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/07/24 15:37:45 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,12 @@ typedef struct s_map_meta
 	int	**map;
 	int **map_color;
 }	t_map_meta;
+
+int			mlx_close(t_vars *vars);
+int			mlx_key_close(int keycode, t_vars *vars);
+void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
+int			draw_line_img(t_vars *data, t_draw *draw);
+int			render(t_vars *data);
 
 int			ft_arr_range(char **arr);
 void		ft_free_split(char **str_arr, int len);

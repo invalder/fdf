@@ -6,13 +6,13 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 10:32:46 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/07/24 14:50:10 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/07/28 16:42:13 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void fdf_init_check(t_map_meta *meta, char *ptr, char **arr_str)
+static void	fdf_init_check(t_map_meta *meta, char *ptr, char **arr_str)
 {
 	meta->height = 0;
 	meta->width = 0;
@@ -21,7 +21,7 @@ static void fdf_init_check(t_map_meta *meta, char *ptr, char **arr_str)
 	arr_str = NULL;
 }
 
-static int  fdf_set_width(t_map_meta *meta, int read_w)
+static int	fdf_set_width(t_map_meta *meta, int read_w)
 {
 	meta->read_width = read_w;
 	if (!meta->width)
@@ -31,11 +31,11 @@ static int  fdf_set_width(t_map_meta *meta, int read_w)
 	return (1);
 }
 
-static void fdf_free_read(t_map_meta *meta, char **arr_str, char *ptr, int is_err)
+static void	fdf_free_read(t_map_meta *meta, char **arr_str, char *ptr, int err)
 {
 	free(ptr);
 	ptr = NULL;
-	if (is_err)
+	if (err)
 	{
 		ft_free_split(arr_str, meta->read_width);
 		exit(1);
@@ -43,7 +43,7 @@ static void fdf_free_read(t_map_meta *meta, char **arr_str, char *ptr, int is_er
 	ft_free_split(arr_str, meta->width);
 }
 
-static char **fdf_trim_split(char *ptr)
+static char	**fdf_trim_split(char *ptr)
 {
 	char	**arr_str;
 	char	*str;
@@ -55,7 +55,7 @@ static char **fdf_trim_split(char *ptr)
 	return (arr_str);
 }
 
-t_map_meta fdf_input_check(char *path)
+t_map_meta	fdf_input_check(char *path)
 {
 	t_map_meta	meta;
 	char		*ptr;
