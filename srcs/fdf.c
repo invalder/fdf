@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 20:39:01 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/07/28 18:57:42 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/07/29 22:37:59 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,12 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		return (fdf_no_file());
-	meta = fdf_input_check(argv[1]);
+	fdf_input_check(&meta, argv[1]);
 	ft_printf("line num = %d\nwidth = %d\n", meta.height, meta.width);
+	fdf_init_map(&meta, argv[1]);
 
 	data.mlx = mlx_init();
-	data.win = mlx_new_window(data.mlx, 1920, 1080, "Hello world!");
+	data.win = mlx_new_window(data.mlx, 1920, 1080, "FDF");
 	mlx_loop_hook(data.mlx, &render, &data);
 	mlx_hook(data.win, 17, 1L << 0, mlx_close, &data);
 	mlx_hook(data.win, 2, 1L << 0, mlx_key_close, &data);

@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 20:39:48 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/07/24 15:37:45 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/07/29 21:31:20 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,10 @@ void		ft_free_split(char **str_arr, int len);
 
 int			fdf_no_file(void);
 
-t_map_meta	fdf_input_check(char *path);
+void		fdf_free_read(t_map_meta *meta, char **arr_str, char *ptr, int err);
+char		**fdf_trim_split(char *ptr);
+void		fdf_input_check(t_map_meta *meta, char *path);
+
+void		fdf_init_map(t_map_meta *meta, char *path);
 
 #endif

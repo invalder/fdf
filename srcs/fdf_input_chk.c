@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 10:32:46 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/07/28 16:42:13 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/07/29 21:32:00 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	fdf_set_width(t_map_meta *meta, int read_w)
 	return (1);
 }
 
-static void	fdf_free_read(t_map_meta *meta, char **arr_str, char *ptr, int err)
+void	fdf_free_read(t_map_meta *meta, char **arr_str, char *ptr, int err)
 {
 	free(ptr);
 	ptr = NULL;
@@ -43,7 +43,7 @@ static void	fdf_free_read(t_map_meta *meta, char **arr_str, char *ptr, int err)
 	ft_free_split(arr_str, meta->width);
 }
 
-static char	**fdf_trim_split(char *ptr)
+char	**fdf_trim_split(char *ptr)
 {
 	char	**arr_str;
 	char	*str;
@@ -55,32 +55,60 @@ static char	**fdf_trim_split(char *ptr)
 	return (arr_str);
 }
 
-t_map_meta	fdf_input_check(char *path)
+// t_map_meta	fdf_input_check(char *path)
+// {
+// 	t_map_meta	meta;
+// 	char		*ptr;
+// 	char		**arr_str;
+// 	int			fd;
+
+// 	ptr = NULL;
+// 	arr_str = NULL;
+// 	fdf_init_check(&meta, ptr, arr_str);
+// 	fd = open(path, O_RDONLY);
+// 	ptr = get_next_line(fd);
+// 	while (ptr)
+// 	{
+// 		arr_str = fdf_trim_split(ptr);
+// 		if (!fdf_set_width(&meta, ft_arr_range(arr_str)))
+// 		{
+// 			close(fd);
+// 			fdf_free_read(&meta, arr_str, ptr, 1);
+// 		}
+// 		fdf_free_read(&meta, arr_str, ptr, 0);
+// 		meta.height++;
+// 		ptr = get_next_line(fd);
+// 	}
+// 	if (ptr)
+// 		free(ptr);
+// 	close(fd);
+// 	return (meta);
+// }
+
+void	fdf_input_check(t_map_meta *meta, char *path)
 {
-	t_map_meta	meta;
 	char		*ptr;
 	char		**arr_str;
 	int			fd;
 
 	ptr = NULL;
 	arr_str = NULL;
-	fdf_init_check(&meta, ptr, arr_str);
+	fdf_init_check(meta, ptr, arr_str);
 	fd = open(path, O_RDONLY);
 	ptr = get_next_line(fd);
 	while (ptr)
 	{
 		arr_str = fdf_trim_split(ptr);
-		if (!fdf_set_width(&meta, ft_arr_range(arr_str)))
+		if (!fdf_set_width(meta, ft_arr_range(arr_str)))
 		{
 			close(fd);
-			fdf_free_read(&meta, arr_str, ptr, 1);
+			fdf_free_read(meta, arr_str, ptr, 1);
 		}
-		fdf_free_read(&meta, arr_str, ptr, 0);
-		meta.height++;
+		fdf_free_read(meta, arr_str, ptr, 0);
+		meta->height++;
 		ptr = get_next_line(fd);
 	}
 	if (ptr)
 		free(ptr);
 	close(fd);
-	return (meta);
 }
