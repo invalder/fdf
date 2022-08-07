@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 20:39:48 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/07/29 21:31:20 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/08/07 19:36:20 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 # include "ft_printf.h"
 # include "get_next_line.h"
 # include "mlx.h"
+
+# define WIDTH				1920
+# define HEIGHT				1080
 
 # define EXIT_SUCCEED		0
 # define EXIT_FAILURE		1
@@ -55,12 +58,27 @@ typedef struct s_draw
 
 typedef struct s_map_meta
 {
-	int	width;
-	int	height;
-	int	read_width;
-	int	**map;
-	int **map_color;
+	int		width;
+	int		height;
+	int		read_width;
+	int		**map;
+	int		**map_color;
+	int		**coor_x;
+	int		**coor_y;
+	float	**coor_xp;
+	float	**coor_yp;
+	int		zoom;
+	float	scale;
+	float	angle;
+	int		shift_x;
+	int		shift_y;
 }	t_map_meta;
+
+typedef struct s_cursor
+{
+	int		width;
+	int		height;
+}	t_cursor;
 
 int			mlx_close(t_vars *vars);
 int			mlx_key_close(int keycode, t_vars *vars);
@@ -78,5 +96,12 @@ char		**fdf_trim_split(char *ptr);
 void		fdf_input_check(t_map_meta *meta, char *path);
 
 void		fdf_init_map(t_map_meta *meta, char *path);
+void		coord_assign(t_map_meta *meta);
+void		coord_assign_prime(t_map_meta *meta);
+
+void		meta_map_print(t_map_meta *meta, int selector);
+void		meta_map_print_prime(t_map_meta *meta, int selector);
+
+void		fdf_draw(t_vars *data, t_draw *draw, t_map_meta *meta);
 
 #endif

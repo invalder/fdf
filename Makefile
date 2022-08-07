@@ -6,7 +6,7 @@
 #    By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 14:05:51 by nnakarac          #+#    #+#              #
-#    Updated: 2022/07/24 15:31:31 by nnakarac         ###   ########.fr        #
+#    Updated: 2022/08/07 16:54:05 by nnakarac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,9 @@ SRCS =  fdf.c \
 		fdf_input_chk.c \
 		fdf_init_map.c \
 		fdf_mlx_utils.c \
+		fdf_draw.c \
+		fdf_init_coordinate.c \
+		fdf_debug.c \
 
 OBJS = $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 15:03:16 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/07/29 21:32:45 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/08/07 21:41:25 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,18 @@ static void	map_init(t_map_meta *meta)
 	height = 0;
 	meta->map = malloc(sizeof(int *) * meta->height);
 	meta->map_color = malloc(sizeof(int *) * meta->height);
+	meta->coor_x = malloc(sizeof(int *) * meta->height);
+	meta->coor_y = malloc(sizeof(int *) * meta->height);
+	meta->coor_xp = malloc(sizeof(float *) * meta->height);
+	meta->coor_yp = malloc(sizeof(float *) * meta->height);
 	while (height < meta->height)
 	{
 		meta->map[height] = malloc(sizeof(int) * meta->width);
 		meta->map_color[height] = malloc(sizeof(int) * meta->width);
+		meta->coor_x[height] = malloc(sizeof(int *) * meta->width);
+		meta->coor_y[height] = malloc(sizeof(int *) * meta->width);
+		meta->coor_xp[height] = malloc(sizeof(float *) * meta->width);
+		meta->coor_yp[height] = malloc(sizeof(float *) * meta->width);
 		height++;
 	}
 }
@@ -73,6 +81,19 @@ static void	map_assign(t_map_meta *meta, char *path)
 
 void	fdf_init_map(t_map_meta *meta, char *path)
 {
+	meta->zoom = 30;
+	meta->angle = 0.56;
+	meta->scale = 1;
 	map_init(meta);
 	map_assign(meta, path);
+	coord_assign(meta);
+	coord_assign_prime(meta);
+	meta->shift_x = WIDTH / 2;
+	meta->shift_y = HEIGHT / 4;
+	// meta_map_print(meta, 1);
+	// meta_map_print(meta, 2);
+	// meta_map_print(meta, 3);
+	// meta_map_print(meta, 4);
+	// meta_map_print_prime(meta, 5);
+	// meta_map_print_prime(meta, 6);
 }
