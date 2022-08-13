@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 15:35:16 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/07/24 15:35:27 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/08/14 01:56:16 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,6 @@ int	mlx_close(t_vars *vars)
 	vars->win = NULL;
 	vars->mlx = NULL;
 	exit(0);
-}
-
-int	mlx_key_close(int keycode, t_vars *vars)
-{
-	if (keycode == 53 || keycode == 27)
-	{
-		mlx_clear_window(vars->mlx, vars->win);
-		mlx_destroy_window(vars->mlx, vars->win);
-		vars->win = NULL;
-		vars->mlx = NULL;
-		exit (0);
-	}
-	return (1);
 }
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
@@ -59,7 +46,9 @@ int	draw_line_img(t_vars *data, t_draw *draw)
 	dy /= (double)pixs;
 	while (pixs)
 	{
-		my_mlx_pixel_put(&data->img, pix_x, pix_y, draw->color);
+		if (pix_x >= 0 && pix_x < WIDTH \
+			&& pix_y >= 0 && pix_y < HEIGHT)
+			my_mlx_pixel_put(&data->img, pix_x, pix_y, draw->color);
 		if (pix_x + dx > 0)
 			pix_x += dx;
 		if (pix_y + dy > 0)
@@ -69,13 +58,14 @@ int	draw_line_img(t_vars *data, t_draw *draw)
 	return (0);
 }
 
-int	render(t_vars *data)
+int	render(t_handle *handy)
 {
-	if (data->win == NULL)
+	if (handy->data->win == NULL)
 	{
-		printf("win = %p\n", data->win);
+		printf("win = %p\n", handy->data->win);
 		return (1);
 	}
-	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
+	mlx_put_image_to_window(handy->data->mlx, handy->data->win, \
+		handy->data->img.img, 0, 0);
 	return (0);
 }

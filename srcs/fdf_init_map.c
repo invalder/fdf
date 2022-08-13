@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 15:03:16 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/08/07 21:41:25 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/08/14 02:11:17 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,13 @@ static void	map_assign_line(t_map_meta *meta, char **arr_str, int height)
 		if (len > 1)
 			meta->map_color[height][width] = ft_atoi_base(arr_ptr[1]);
 		else
-			meta->map_color[height][width] = ft_atoi_base("0XFFFFFF");
+		{
+			if (!meta->map[height][width])
+				meta->map_color[height][width] = ft_atoi_base("0XFFFFFF");
+			else
+				meta->map_color[height][width] = ft_atoi_base("0XFFFFFF") \
+					- ft_atoi_base("0XFFFF00");
+		}
 		ft_free_split(arr_ptr, len);
 		width++;
 	}
@@ -79,21 +85,29 @@ static void	map_assign(t_map_meta *meta, char *path)
 	close(fd);
 }
 
+void	init_zoom(t_map_meta *meta)
+{
+	int	zoom_h;
+	int zoom_w;
+
+	zoom_h = (int)floor((double)HEIGHT / (double)meta->height);
+	zoom_w = (int)floor((double)WIDTH / (double)meta->width);
+	if (zoom_h > zoom_w)
+		meta->zoom = zoom_w / 2;
+	else
+		meta->zoom = zoom_h / 2;
+}
+
 void	fdf_init_map(t_map_meta *meta, char *path)
 {
-	meta->zoom = 30;
-	meta->angle = 0.56;
+	meta->angle = 0.615472907;
+	meta->zoom = 1;
 	meta->scale = 1;
 	map_init(meta);
 	map_assign(meta, path);
+	init_zoom(meta);
 	coord_assign(meta);
 	coord_assign_prime(meta);
-	meta->shift_x = WIDTH / 2;
-	meta->shift_y = HEIGHT / 4;
-	// meta_map_print(meta, 1);
-	// meta_map_print(meta, 2);
-	// meta_map_print(meta, 3);
-	// meta_map_print(meta, 4);
-	// meta_map_print_prime(meta, 5);
-	// meta_map_print_prime(meta, 6);
+	meta->shift_x = (WIDTH / 2) - (meta->width * meta->scale * cos(meta->angle) / 4);
+	meta->shift_y = (HEIGHT / 4) - (meta->height * meta->scale * sin(meta->angle) / 2);
 }

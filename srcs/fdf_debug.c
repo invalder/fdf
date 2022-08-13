@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 16:37:33 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/08/07 18:15:59 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/08/13 16:56:00 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	meta_map_print(t_map_meta *meta, int selector)
 {
 	int	height;
 	int	width;
-	int **print;
+	int	**print;
 
 	height = 0;
 	print = to_print(meta, selector);
@@ -52,7 +52,6 @@ void	meta_map_print(t_map_meta *meta, int selector)
 			width = 0;
 			while (width < meta->width)
 			{
-				// meta->coor_x[height][width]
 				if (selector == 2)
 					ft_printf("%X\t", print[height][width]);
 				else
@@ -68,9 +67,9 @@ void	meta_map_print(t_map_meta *meta, int selector)
 
 void	meta_map_print_prime(t_map_meta *meta, int selector)
 {
-	int	height;
-	int	width;
-	float **print;
+	int		height;
+	int		width;
+	float	**print;
 
 	height = 0;
 	print = to_print_prime(meta, selector);

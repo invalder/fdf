@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 16:03:52 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/08/07 19:44:08 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/08/13 16:56:18 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,4 @@ void	fdf_draw(t_vars *data, t_draw *draw, t_map_meta *meta)
 			fdf_draw_vertz(data, draw, meta, &cursor);
 		}
 	}
-
 }
