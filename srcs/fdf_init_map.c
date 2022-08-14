@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 15:03:16 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/08/14 02:11:17 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/08/14 23:26:53 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,9 @@ static void	map_assign_line(t_map_meta *meta, char **arr_str, int height)
 		else
 		{
 			if (!meta->map[height][width])
+			{
 				meta->map_color[height][width] = ft_atoi_base("0XFFFFFF");
+			}
 			else
 				meta->map_color[height][width] = ft_atoi_base("0XFFFFFF") \
 					- ft_atoi_base("0XFFFF00");
@@ -88,7 +90,7 @@ static void	map_assign(t_map_meta *meta, char *path)
 void	init_zoom(t_map_meta *meta)
 {
 	int	zoom_h;
-	int zoom_w;
+	int	zoom_w;
 
 	zoom_h = (int)floor((double)HEIGHT / (double)meta->height);
 	zoom_w = (int)floor((double)WIDTH / (double)meta->width);
@@ -100,14 +102,21 @@ void	init_zoom(t_map_meta *meta)
 
 void	fdf_init_map(t_map_meta *meta, char *path)
 {
-	meta->angle = 0.615472907;
+	meta->angle = 30 * PI / 180;
 	meta->zoom = 1;
-	meta->scale = 1;
+	meta->scale = 0.1;
+	meta->rot_yaw = 0;
+	meta->rot_roll = 0;
+	meta->rot_pitch = 0;
+	meta->is_iso = 1;
 	map_init(meta);
 	map_assign(meta, path);
 	init_zoom(meta);
 	coord_assign(meta);
 	coord_assign_prime(meta);
-	meta->shift_x = (WIDTH / 2) - (meta->width * meta->scale * cos(meta->angle) / 4);
-	meta->shift_y = (HEIGHT / 4) - (meta->height * meta->scale * sin(meta->angle) / 2);
+	fdf_rotate_map_yaw(meta);
+	fdf_rotate_map_roll(meta);
+	fdf_rotate_map_pitch(meta);
+	meta->shift_x = (WIDTH / 2);
+	meta->shift_y = (HEIGHT / 2);
 }

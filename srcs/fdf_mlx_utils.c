@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 15:35:16 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/08/14 01:56:16 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/08/14 23:23:47 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,7 @@ int	draw_line_img(t_vars *data, t_draw *draw)
 int	render(t_handle *handy)
 {
 	if (handy->data->win == NULL)
-	{
-		printf("win = %p\n", handy->data->win);
 		return (1);
-	}
 	mlx_put_image_to_window(handy->data->mlx, handy->data->win, \
 		handy->data->img.img, 0, 0);
 	return (0);

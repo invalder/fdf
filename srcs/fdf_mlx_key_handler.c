@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 19:12:41 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/08/14 02:21:02 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/08/14 23:29:41 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,34 +30,25 @@ int	mlx_key_handler(int keycode, t_handle *handy)
 		mlx_key_project(keycode, handy);
 	else if (keycode == KEY_SPACE)
 		mlx_reset(handy);
+	else if (keycode == KEY_Q || keycode == KEY_E)
+		mlx_key_rot_yaw(keycode, handy);
+	else
+		mlx_key_handler2(keycode, handy);
+	mlx_re_draw(handy);
 	return (0);
 }
 
-void	mlx_key_close(t_vars *data)
+int	mlx_key_handler2(int keycode, t_handle *handy)
 {
-	mlx_clear_window(data->mlx, data->win);
-	mlx_destroy_window(data->mlx, data->win);
-	data->win = NULL;
-	data->mlx = NULL;
-	exit (0);
-}
-
-void	mlx_key_vertz(int keycode, t_handle *handy)
-{
-	if (keycode == KEY_UP || keycode == KEY_W)
-		handy->meta->shift_y -= 10;
-	else
-		handy->meta->shift_y += 10;
-	mlx_re_draw(handy);
-}
-
-void	mlx_key_horz(int keycode, t_handle *handy)
-{
-	if (keycode == KEY_LEFT || keycode == KEY_A)
-		handy->meta->shift_x -= 10;
-	else
-		handy->meta->shift_x += 10;
-	mlx_re_draw(handy);
+	if (keycode == KEY_P)
+		mlx_key_parallel(handy);
+	else if (keycode == KEY_O)
+		mlx_key_noniso(handy);
+	else if (keycode == KEY_R || keycode == KEY_F)
+		mlx_key_rot_roll(keycode, handy);
+	else if (keycode == KEY_Z || keycode == KEY_C)
+		mlx_key_rot_pitch(keycode, handy);
+	return (0);
 }
 
 void	mlx_re_draw(t_handle *handy)
@@ -69,6 +60,18 @@ void	mlx_re_draw(t_handle *handy)
 		&handy->data->img.line_length, &handy->data->img.endian);
 	coord_assign(handy->meta);
 	coord_assign_prime(handy->meta);
+	fdf_rotate_map_roll(handy->meta);
+	fdf_rotate_map_pitch(handy->meta);
+	fdf_rotate_map_yaw(handy->meta);
 	mlx_clear_window(handy->data->mlx, handy->data->win);
 	fdf_draw(handy->data, handy->draw, handy->meta);
+}
+
+void	mlx_key_close(t_vars *data)
+{
+	mlx_clear_window(data->mlx, data->win);
+	mlx_destroy_window(data->mlx, data->win);
+	data->win = NULL;
+	data->mlx = NULL;
+	exit (0);
 }

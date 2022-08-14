@@ -6,13 +6,14 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 20:39:01 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/08/13 21:42:27 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/08/14 22:53:43 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	init_handle(t_handle *handy, t_vars *data, t_draw *draw, t_map_meta *meta)
+static void	init_handle(t_handle *handy, t_vars *data, \
+	t_draw *draw, t_map_meta *meta)
 {
 	handy->data = data;
 	handy->draw = draw;
@@ -24,7 +25,7 @@ int	main(int argc, char **argv)
 	t_vars		data;
 	t_draw		draw;
 	t_map_meta	meta;
-	t_handle	handy;
+	static t_handle	handy;
 
 	if (argc != 2)
 		return (fdf_no_file());

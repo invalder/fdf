@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 20:39:48 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/08/14 02:20:49 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/08/14 22:17:28 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,17 @@ enum e_key {
 	KEY_A = 0,
 	KEY_S = 1,
 	KEY_D = 2,
+	KEY_F = 3,
+	KEY_Z = 6,
+	KEY_C = 8,
+	KEY_R = 15,
 	KEY_PLUS = 24,
 	KEY_MINUS = 27,
-	KEY_SQBC = 33,
 	KEY_SQBO = 30,
+	KEY_O = 31,
+	KEY_I = 34,
+	KEY_SQBC = 33,
+	KEY_P = 35,
 	KEY_QUOTE = 39,
 	KEY_SEMI = 41,
 	KEY_SPACE = 49,
@@ -95,13 +102,17 @@ typedef struct s_map_meta
 	int		**map_color;
 	int		**coor_x;
 	int		**coor_y;
-	long double	**coor_xp;
-	long double	**coor_yp;
+	float	**coor_xp;
+	float	**coor_yp;
 	float	zoom;
 	float	scale;
 	float	angle;
+	float	rot_yaw;
+	float	rot_roll;
+	float	rot_pitch;
 	int		shift_x;
 	int		shift_y;
+	int		is_iso;
 }	t_map_meta;
 
 typedef struct s_cursor
@@ -120,12 +131,18 @@ typedef struct s_handle
 
 int			mlx_close(t_vars *vars);
 int			mlx_key_handler(int keycode, t_handle *handy);
+int			mlx_key_handler2(int keycode, t_handle *handy);
 void		mlx_key_close(t_vars *vars);
 void		mlx_key_vertz(int keycode, t_handle *handy);
 void		mlx_key_horz(int keycode, t_handle *handy);
 void		mlx_key_scale(int keycode, t_handle *handy);
 void		mlx_key_zoom(int keycode, t_handle *handy);
 void		mlx_key_project(int keycode, t_handle *handy);
+void		mlx_key_rot_roll(int keycode, t_handle *handy);
+void		mlx_key_rot_pitch(int keycode, t_handle *handy);
+void		mlx_key_rot_yaw(int keycode, t_handle *handy);
+void		mlx_key_parallel(t_handle *handy);
+void		mlx_key_noniso(t_handle *handy);
 void		mlx_reset(t_handle *handy);
 void		mlx_re_draw(t_handle *handy);
 
@@ -146,6 +163,9 @@ void		fdf_init_map(t_map_meta *meta, char *path);
 void		init_zoom(t_map_meta *meta);
 void		coord_assign(t_map_meta *meta);
 void		coord_assign_prime(t_map_meta *meta);
+void		fdf_rotate_map_roll(t_map_meta *meta);
+void		fdf_rotate_map_pitch(t_map_meta *meta);
+void		fdf_rotate_map_yaw(t_map_meta *meta);
 
 void		meta_map_print(t_map_meta *meta, int selector);
 void		meta_map_print_prime(t_map_meta *meta, int selector);
