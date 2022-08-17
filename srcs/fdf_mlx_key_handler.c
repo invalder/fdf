@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 19:12:41 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/08/14 23:29:41 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/08/17 16:36:22 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ void	mlx_re_draw(t_handle *handy)
 		&handy->data->img.line_length, &handy->data->img.endian);
 	coord_assign(handy->meta);
 	coord_assign_prime(handy->meta);
+	fdf_rotate_map_yaw(handy->meta);
 	fdf_rotate_map_roll(handy->meta);
 	fdf_rotate_map_pitch(handy->meta);
-	fdf_rotate_map_yaw(handy->meta);
 	mlx_clear_window(handy->data->mlx, handy->data->win);
 	fdf_draw(handy->data, handy->draw, handy->meta);
 }

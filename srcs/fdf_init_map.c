@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 15:03:16 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/08/14 23:26:53 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/08/17 16:36:29 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void	map_init(t_map_meta *meta)
 	meta->coor_y = malloc(sizeof(int *) * meta->height);
 	meta->coor_xp = malloc(sizeof(float *) * meta->height);
 	meta->coor_yp = malloc(sizeof(float *) * meta->height);
+	meta->coor_zp = malloc(sizeof(float *) * meta->height);
 	while (height < meta->height)
 	{
 		meta->map[height] = malloc(sizeof(int) * meta->width);
@@ -31,6 +32,7 @@ static void	map_init(t_map_meta *meta)
 		meta->coor_y[height] = malloc(sizeof(int *) * meta->width);
 		meta->coor_xp[height] = malloc(sizeof(float *) * meta->width);
 		meta->coor_yp[height] = malloc(sizeof(float *) * meta->width);
+		meta->coor_zp[height] = malloc(sizeof(float *) * meta->width);
 		height++;
 	}
 }

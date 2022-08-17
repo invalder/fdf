@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 20:39:48 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/08/14 22:17:28 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/08/17 16:15:13 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ typedef struct s_map_meta
 	int		**coor_y;
 	float	**coor_xp;
 	float	**coor_yp;
+	float	**coor_zp;
 	float	zoom;
 	float	scale;
 	float	angle;
