@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 16:27:48 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/08/14 22:46:18 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/08/21 17:07:29 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ void	coord_assign_prime(t_map_meta *meta)
 			z = 0;
 			if (meta->is_iso)
 				z = meta->map[height][width] * meta->scale * meta->zoom;
-			// meta->coor_xp[height][width] = (x - y) * cos(meta->angle);
-			// meta->coor_yp[height][width] = (x + y) * sin(meta->angle) - z;
 			meta->coor_xp[height][width] = (x * cos(meta->angle)) - \
 				(y * sin(meta->angle));
 			meta->coor_yp[height][width] = (x * sin(meta->angle)) + \

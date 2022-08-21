@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:19:47 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/08/14 23:35:46 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/08/21 17:06:17 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	mlx_key_horz(int keycode, t_handle *handy)
 
 void	mlx_key_parallel(t_handle *handy)
 {
-	handy->meta->angle = 30 * PI / 180;
 	handy->meta->scale = 0.1;
 	handy->meta->angle = 45 * PI / 180;
 	handy->meta->rot_yaw = -45 * PI / 180;
@@ -44,10 +43,6 @@ void	mlx_key_parallel(t_handle *handy)
 
 void	mlx_key_noniso(t_handle *handy)
 {
-	// handy->meta->angle = 45 * PI / 180;
-	// handy->meta->rot_yaw = -45 * PI / 180;
-	// handy->meta->rot_roll = 0;
-	// handy->meta->scale = 0.1;
 	handy->meta->rot_roll = 0.615472907;
 	handy->meta->rot_pitch = 0;
 	handy->meta->rot_yaw = 0;

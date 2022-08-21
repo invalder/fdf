@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 22:58:42 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/08/14 23:24:47 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/08/21 17:05:43 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,3 @@ void	mlx_key_project(int keycode, t_handle *handy)
 	else
 		handy->meta->angle += PI / 180;
 }
-
