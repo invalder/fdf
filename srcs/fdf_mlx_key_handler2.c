@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 22:58:42 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/08/14 23:24:47 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/08/21 16:49:39 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,7 @@ void	mlx_key_zoom(int keycode, t_handle *handy)
 void	mlx_key_project(int keycode, t_handle *handy)
 {
 	if (keycode == KEY_SEMI)
-		handy->meta->angle -= PI / 180;
+		handy->meta->angle -= (1 % 360) * PI / 180;
 	else
-		handy->meta->angle += PI / 180;
+		handy->meta->angle += (1 % 360) * PI / 180;
 }
-

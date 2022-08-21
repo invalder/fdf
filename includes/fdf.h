@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 20:39:48 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/08/17 16:15:13 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/08/21 11:37:12 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,6 +164,7 @@ void		fdf_init_map(t_map_meta *meta, char *path);
 void		init_zoom(t_map_meta *meta);
 void		coord_assign(t_map_meta *meta);
 void		coord_assign_prime(t_map_meta *meta);
+void		coord_assign_propagate(t_map_meta *meta);
 void		fdf_rotate_map_roll(t_map_meta *meta);
 void		fdf_rotate_map_pitch(t_map_meta *meta);
 void		fdf_rotate_map_yaw(t_map_meta *meta);

@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 20:39:01 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/08/14 22:53:43 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/08/21 11:04:52 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ static void	init_handle(t_handle *handy, t_vars *data, \
 
 int	main(int argc, char **argv)
 {
-	t_vars		data;
-	t_draw		draw;
-	t_map_meta	meta;
+	t_vars			data;
+	t_draw			draw;
+	t_map_meta		meta;
 	static t_handle	handy;
 
 	if (argc != 2)

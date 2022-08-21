@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 21:44:02 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/08/14 23:24:07 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/08/21 16:49:25 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,23 @@
 void	mlx_key_rot_roll(int keycode, t_handle *handy)
 {
 	if (keycode == KEY_F)
-		handy->meta->rot_roll -= PI / 180;
+		handy->meta->rot_roll -= (1 % 360) * PI / 180;
 	else
-		handy->meta->rot_roll += PI / 180;
+		handy->meta->rot_roll += (1 % 360) * PI / 180;
 }
 
 void	mlx_key_rot_pitch(int keycode, t_handle *handy)
 {
 	if (keycode == KEY_Z)
-		handy->meta->rot_pitch -= PI / 180;
+		handy->meta->rot_pitch -= (1 % 360) * PI / 180;
 	else
-		handy->meta->rot_pitch += PI / 180;
+		handy->meta->rot_pitch += (1 % 360) * PI / 180;
 }
 
 void	mlx_key_rot_yaw(int keycode, t_handle *handy)
 {
 	if (keycode == KEY_Q)
-		handy->meta->rot_yaw -= PI / 180;
+		handy->meta->rot_yaw -= (1 % 360) * PI / 180;
 	else
-		handy->meta->rot_yaw += PI / 180;
+		handy->meta->rot_yaw += (1 % 360) * PI / 180;
 }

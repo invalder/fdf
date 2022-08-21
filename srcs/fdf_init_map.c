@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 15:03:16 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/08/17 16:36:29 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/08/21 16:59:17 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,18 +107,19 @@ void	fdf_init_map(t_map_meta *meta, char *path)
 	meta->angle = 30 * PI / 180;
 	meta->zoom = 1;
 	meta->scale = 0.1;
-	meta->rot_yaw = 0;
-	meta->rot_roll = 0;
-	meta->rot_pitch = 0;
+	meta->rot_yaw = 0 * PI / 180;
+	meta->rot_roll = 0 * PI / 180;
+	meta->rot_pitch = 0 * PI / 180;
 	meta->is_iso = 1;
 	map_init(meta);
 	map_assign(meta, path);
 	init_zoom(meta);
 	coord_assign(meta);
 	coord_assign_prime(meta);
-	fdf_rotate_map_yaw(meta);
 	fdf_rotate_map_roll(meta);
 	fdf_rotate_map_pitch(meta);
+	fdf_rotate_map_yaw(meta);
+	coord_assign_propagate(meta);
 	meta->shift_x = (WIDTH / 2);
 	meta->shift_y = (HEIGHT / 2);
 }

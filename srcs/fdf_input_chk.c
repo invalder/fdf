@@ -6,7 +6,7 @@
 /*   By: nnakarac <nnakarac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 10:32:46 by nnakarac          #+#    #+#             */
-/*   Updated: 2022/07/29 21:32:00 by nnakarac         ###   ########.fr       */
+/*   Updated: 2022/08/21 11:01:11 by nnakarac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,36 +54,6 @@ char	**fdf_trim_split(char *ptr)
 		free(str);
 	return (arr_str);
 }
-
-// t_map_meta	fdf_input_check(char *path)
-// {
-// 	t_map_meta	meta;
-// 	char		*ptr;
-// 	char		**arr_str;
-// 	int			fd;
-
-// 	ptr = NULL;
-// 	arr_str = NULL;
-// 	fdf_init_check(&meta, ptr, arr_str);
-// 	fd = open(path, O_RDONLY);
-// 	ptr = get_next_line(fd);
-// 	while (ptr)
-// 	{
-// 		arr_str = fdf_trim_split(ptr);
-// 		if (!fdf_set_width(&meta, ft_arr_range(arr_str)))
-// 		{
-// 			close(fd);
-// 			fdf_free_read(&meta, arr_str, ptr, 1);
-// 		}
-// 		fdf_free_read(&meta, arr_str, ptr, 0);
-// 		meta.height++;
-// 		ptr = get_next_line(fd);
-// 	}
-// 	if (ptr)
-// 		free(ptr);
-// 	close(fd);
-// 	return (meta);
-// }
 
 void	fdf_input_check(t_map_meta *meta, char *path)
 {
